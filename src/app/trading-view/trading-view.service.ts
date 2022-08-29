@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs";
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs';
 
-interface Binanace{
+interface Binanace {
   time: number;
   open: number;
   high: number;
@@ -11,19 +11,17 @@ interface Binanace{
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TradingViewService {
-  
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
-  getBinance(time: string){
-    return this.http.get(`/api/getBinance/${time}`)
-    .pipe(
+  getBinance(time: string) {
+    return this.http.get(`/api/getBinance/${time}`).pipe(
       map((response: any) => {
         const chartData = response.map((data) => {
           return {
-            time: data.time / 1000,
+            time: data.closeTime / 1000,
             open: parseFloat(data.open),
             high: parseFloat(data.high),
             low: parseFloat(data.low),

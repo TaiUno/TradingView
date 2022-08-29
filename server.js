@@ -17,8 +17,6 @@ app.get("/getBinance/:time", async (req, res) => {
       limit: 500,
     })
     .then((cb) => {
-      console.log(cb);
-
       binances = cb;
     });
 
@@ -27,7 +25,6 @@ app.get("/getBinance/:time", async (req, res) => {
   }
 
   res.json(binances);
-  res.sendFile(path.join());
 });
 
 app.get("/", (req, res) => {
