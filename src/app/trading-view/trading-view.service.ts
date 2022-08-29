@@ -17,7 +17,7 @@ export class TradingViewService {
   constructor(private http: HttpClient) {}
 
   getBinance(time: string) {
-    return this.http.get(`/api/getBinance/${time}`).pipe(
+    return this.http.get(`/getBinance/${time}`).pipe(
       map((response: any) => {
         const chartData = response.map((data) => {
           return {
