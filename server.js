@@ -34,6 +34,6 @@ app.get("/", (req, res) => {
   res.sendFile(process.cwd() + "/dist/binance-test/index.html");
 });
 
-app.listen(listen(process.env.PORT || port), () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Server listening on the port...`);
 });
