@@ -4,7 +4,7 @@
   "scripts": {
     "heroku-postbuild": "ng build --prod",
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node --experimental-modules --es-module-specifier-resolution=node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -19,6 +19,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@marcius-capital/binance-api": "^0.2.16",
+    "express": "^4.18.1",
     "lightweight-charts": "^3.8.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -35,6 +37,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "nodemon": "^2.0.19",
     "typescript": "~4.7.2"
   }
 }
