@@ -11,7 +11,7 @@ app.get("/getBinance/:time", async (req, res) => {
   const { time } = req.params;
 
   await api.rest
-    .ohlc({
+    .klines({
       symbol: "btcusdt".toUpperCase(),
       interval: time.toLowerCase(),
       limit: 500,
