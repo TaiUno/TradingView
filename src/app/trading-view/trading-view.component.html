@@ -1,0 +1,45 @@
+<h3>Trading View:</h3>
+<div class="top__toolBar">
+  <div class="topRight__toolBar-itemDisplay">
+    <div class="item">Time</div>
+    <div
+      class="item"
+      (click)="updateInterval($event)"
+      *ngFor="let item of intervalListLocalToLoaded"
+      [id]="item + '_headerId'"
+    >
+      {{ item }}
+    </div>
+    <div class="arrow_down" (click)="showHideStateIntervals($event)"></div>
+    <div class="dropdown-menu">
+      <div class="header-interval">
+        <h5>Select Intervals</h5>
+        <h3 (click)="saveStateInterval()">
+          {{ isEditButton ? "Edit" : "Save" }}
+        </h3>
+      </div>
+      <div class="information-grid">
+        <label class="dropdown-heading">Time</label>
+        <label
+          class="dropdown-heading"
+          *ngFor="let item of intervalItemsOriginal"
+          [for]="item"
+          [id]="item + '_id'"
+        >
+          {{ item }}
+          <div class="round">
+            <input
+              type="checkbox"
+              (change)="onChangeCheckBox($event)"
+              [id]="item"
+              hidden
+            />
+            <label [for]="item"></label>
+          </div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="topLeft__toolBar-itemDisplay">TradingView</div>
+</div>
+<div #container></div>

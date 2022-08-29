@@ -1,0 +1,220 @@
+.top__toolBar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #171b26;
+
+  .topRight__toolBar-itemDisplay {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+
+    .item {
+      cursor: pointer;
+    }
+
+    .item.active {
+      color: #ffc107;
+    }
+
+    .arrow_down {
+      cursor: pointer;
+      width: 0;
+      height: 0;
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 8px solid #fff;
+      margin-left: -10px;
+      transition: 0.5s ease;
+    }
+
+    .arrow_up {
+      transform: rotate(180deg);
+      transform-origin: 50% 40%;
+    }
+
+    .dropdown-menu {
+      cursor: default;
+      position: absolute;
+      left: calc(100% - 50px);
+      top: calc(100% + 3px);
+      background-color: #1e222d;
+      padding: 0.75rem;
+      border-radius: 0.25rem;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+
+      .header-interval {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        align-items: baseline;
+        margin-bottom: 20px;
+
+        h3 {
+          cursor: pointer;
+          color: #ffc107;
+        }
+      }
+
+      .information-grid {
+        display: grid;
+        grid-template-columns: repeat(4, max-content);
+        gap: 2rem;
+        z-index: 2;
+
+        .dropdown-heading {
+          position: relative;
+          width: 70px;
+          height: 25px;
+          background-color: #353a46;
+          border-radius: 2px;
+          text-align: center;
+          cursor: pointer;
+
+          //CSS icon check box
+          .round {
+            position: absolute;
+            top: -12px;
+            right: 17px;
+          }
+
+          .round label {
+            background-color: #ced4da;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+            height: 28px;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 28px;
+          }
+
+          .round label:after {
+            border: 2px solid #000;
+            border-top: none;
+            border-right: none;
+            content: "";
+            height: 6px;
+            left: 7px;
+            opacity: 0;
+            position: absolute;
+            top: 8px;
+            transform: rotate(-45deg);
+            width: 12px;
+          }
+
+          .round label:before {
+            border: 2px solid #000;
+            border-top: none;
+            border-right: none;
+            content: "";
+            height: 6px;
+            left: 7px;
+            opacity: 0;
+            position: absolute;
+            top: 8px;
+            transform: rotate(-45deg);
+            width: 12px;
+          }
+
+          .round input[type="checkbox"] + label:before {
+            border-color: #000;
+          }
+
+          .round input[type="checkbox"] + label:before {
+            opacity: 1;
+          }
+
+          .round input[type="checkbox"]:checked + label {
+            background-color: #ffc107;
+            border-color: #ffc107;
+          }
+
+          .round input[type="checkbox"]:checked + label:after {
+            opacity: 1;
+          }
+        }
+
+        .dropdown-heading.checked {
+          background-color: #716f69;
+          color: #ffc107;
+        }
+      }
+    }
+
+    .arrow_down.active ~ .dropdown-menu {
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 3;
+    }
+  }
+
+  .topLeft__toolBar-itemDisplay {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    color: #ff6a1c;
+    cursor: context-menu;
+  }
+}
+
+// Mobile
+@media only screen and (max-width: 485px) {
+  .top__toolBar {
+    .topRight__toolBar-itemDisplay {
+      .dropdown-menu {
+        max-height: 473px;
+        min-width: 115px;
+
+        .header-interval {
+          flex-wrap: wrap-reverse;
+        }
+        .information-grid {
+          grid-template-columns: repeat(1, max-content);
+          gap: 0.5rem;
+          max-height: 356px;
+          overflow: scroll;
+
+          .dropdown-heading {
+            margin-top: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 486px) and (max-width: 739px) {
+  .top__toolBar {
+    .topRight__toolBar-itemDisplay {
+      height: 35px;
+
+      .dropdown-menu {
+        left: 0;
+        right: 0;
+
+        .information-grid {
+          grid-template-columns: repeat(2, max-content);
+          gap: 10% calc(100% - 10rem);
+          overflow: scroll;
+
+          .dropdown-heading {
+            margin-top: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Tablet
+@media only screen and (min-width: 740px) and (max-width: 1023px) {
+}
