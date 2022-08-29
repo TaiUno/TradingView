@@ -1,18 +1,18 @@
-import api from '@marcius-capital/binance-api';
-import express from 'express';
+import api from "@marcius-capital/binance-api";
+import express from "express";
 
 const app = express(),
   port = 3080;
 let binances = [];
 
-app.use(express.static(process.cwd() + '/dist/binance-test/'));
+app.use(express.static(process.cwd() + "/dist/binance-test/"));
 
-app.get('/getBinance/:time', async (req, res) => {
+app.get("/getBinance/:time", async (req, res) => {
   const { time } = req.params;
 
   await api.rest
     .ohlc({
-      symbol: 'btcusdt'.toUpperCase(),
+      symbol: "btcusdt".toUpperCase(),
       interval: time.toLowerCase(),
       limit: 500,
     })
@@ -23,17 +23,17 @@ app.get('/getBinance/:time', async (req, res) => {
     });
 
   if (binances.length < 1) {
-    return res.status(404).send('Binance not found');
+    return res.status(404).send("Binance not found");
   }
 
   res.json(binances);
   res.sendFile(path.join());
 });
 
-app.get('/', (req, res) => {
-  res.sendFile(process.cwd() + '/dist/binance-test/index.html');
+app.get("/", (req, res) => {
+  res.sendFile(process.cwd() + "/dist/binance-test/index.html");
 });
 
-app.listen(port, () => {
-  console.log(`Server listening on the port::${port}`);
+app.listen(listen(process.env.PORT || port), () => {
+  console.log(`Server listening on the port...`);
 });
