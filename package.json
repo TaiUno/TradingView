@@ -2,7 +2,7 @@
   "name": "binance-test",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "ng build --configuration production --aot",
     "ng": "ng",
     "start": "node --experimental-modules --es-module-specifier-resolution=node server.js",
     "build": "ng build",
