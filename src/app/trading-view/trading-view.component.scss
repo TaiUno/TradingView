@@ -4,22 +4,32 @@
   align-items: center;
   justify-content: space-between;
   background-color: #171b26;
+  color: white;
 
   .topRight__toolBar-itemDisplay {
     position: relative;
     display: flex;
-    flex: 1;
+    flex: auto;
     justify-content: space-around;
     align-items: center;
-    color: white;
+    flex-wrap: wrap;
 
     .item {
       cursor: pointer;
+      width: 50px;
     }
 
     .item.active {
       color: #ffc107;
     }
+  }
+
+  .topMid_toolBar-itemDisplay {
+    position: relative;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 
     .arrow_down {
       cursor: pointer;
@@ -40,7 +50,7 @@
     .dropdown-menu {
       cursor: default;
       position: absolute;
-      left: calc(100% - 50px);
+      left: calc(100% - 430px);
       top: calc(100% + 3px);
       background-color: #1e222d;
       padding: 0.75rem;
@@ -160,8 +170,9 @@
   .topLeft__toolBar-itemDisplay {
     display: flex;
     flex: 1;
-    justify-content: space-around;
+    justify-content: flex-end;
     color: #ff6a1c;
+    margin-right: 5px;
     cursor: context-menu;
   }
 }
@@ -169,10 +180,9 @@
 // Mobile
 @media only screen and (max-width: 485px) {
   .top__toolBar {
-    .topRight__toolBar-itemDisplay {
+    .topMid_toolBar-itemDisplay {
       .dropdown-menu {
-        max-height: 473px;
-        min-width: 115px;
+        left: calc(100% - 122px);
 
         .header-interval {
           flex-wrap: wrap-reverse;
@@ -185,6 +195,7 @@
 
           .dropdown-heading {
             margin-top: 14px;
+            margin-right: 20px;
           }
         }
       }
@@ -194,11 +205,9 @@
 
 @media only screen and (min-width: 486px) and (max-width: 739px) {
   .top__toolBar {
-    .topRight__toolBar-itemDisplay {
-      height: 35px;
-
+    .topMid_toolBar-itemDisplay {
       .dropdown-menu {
-        left: 0;
+        left: calc(100% - 280px);
         right: 0;
 
         .information-grid {
