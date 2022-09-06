@@ -51,7 +51,9 @@ export class TradingViewComponent implements OnInit {
         ? this.loadStateIntervals()
         : this.intervalListLocalToLoaded;
     this.intervalSelected =
-      this.intervalListLocalToLoaded[0] || this.intervalSelected;
+      this.localStoreService.getStateIntervalLocal() ||
+      this.intervalListLocalToLoaded[0] ||
+      this.intervalSelected;
   }
 
   ngAfterViewInit(): void {
@@ -60,9 +62,8 @@ export class TradingViewComponent implements OnInit {
     this.autoRefreshChartData();
 
     //Load state interval toolbar
-    const intervalState = this.localStoreService.getStateIntervalLocal();
     document
-      .getElementById(`${intervalState || this.intervalSelected}_headerId`)
+      .getElementById(`${this.intervalSelected}_headerId`)
       ?.classList.add(this.classActive);
 
     // Resize chart
